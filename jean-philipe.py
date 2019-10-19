@@ -1,7 +1,13 @@
 import json
 import os
 import sys
+import signal
 import discord
+from discord.ext import commands
+
+#
+# CONFIG
+#
 
 config = {
     # Don't add your token here. Run the app and coplete the config.json file.
@@ -28,5 +34,17 @@ def load_config():
         config[key] = value
 
 
+#
+# BOT 
+#
+
+bot = commands.Bot(command_prefix='!')
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
+
+
 if __name__ == "__main__":
     load_config()
+    bot.run(config['discord_token'])
