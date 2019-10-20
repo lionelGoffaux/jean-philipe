@@ -3,6 +3,7 @@ import os
 import sys
 import discord
 from discord.ext import commands
+from discord.ext.tasks import loop
 
 #
 # CONFIG
@@ -60,6 +61,11 @@ def load_plugins(client: commands.Bot):
     for file in os.listdir(os.path.join(".", "plugin")):
         if file.endswith('.py'):
             client.load_extension(f"plugin.{file[:-3]}")
+
+
+@loop(seconds=5)
+async def printer(self):
+    print("task")
 
 
 if __name__ == "__main__":

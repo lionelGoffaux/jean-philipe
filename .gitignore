@@ -109,3 +109,6 @@ venv.bak/
 
 # config
 config.json
+
+deadlines.sql3
+deadlines.log
