@@ -50,7 +50,7 @@ class Deadlines(commands.Cog):
         c.execute("""SELECT MAX(`taskId`) FROM `deadlines` WHERE `serverId`=?""",
                   (ctx.guild.id,))
         data = c.fetchall()
-        if len(data) != 0:
+        if data[0][0] is not None:
             id = data[0][0] + 1
 
         c.execute('''INSERT INTO `deadlines`(serverId, taskId, date, task)
